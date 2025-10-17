@@ -56,6 +56,10 @@ resource "azurerm_network_security_group" "nsg" {
   name                = "mytfnsg1"
   resource_group_name = azurerm_resource_group.rg.name
   location            = "West US 2"
+
+  tags = {
+    environment = "test env"
+  }
 }
 
 resource "azurerm_network_security_rule" "nsrule" {
@@ -70,4 +74,15 @@ resource "azurerm_network_security_rule" "nsrule" {
   destination_port_range      = "3389"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
+}
+
+resource "azurerm_public_ip" "pip" {
+  name                = "mytfpip1"
+  location            = "West US 2"
+  allocation_method   = "Dynamic"
+  resource_group_name = azurerm_resource_group.rg.name
+
+  tags = {
+    environment = "test env"
+  }
 }
