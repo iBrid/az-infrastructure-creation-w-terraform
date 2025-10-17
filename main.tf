@@ -79,7 +79,7 @@ resource "azurerm_network_security_rule" "nsrule" {
 resource "azurerm_public_ip" "pip" {
   name                = "mytfpip1"
   location            = "West US 2"
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
   resource_group_name = azurerm_resource_group.rg.name
 
   tags = {
