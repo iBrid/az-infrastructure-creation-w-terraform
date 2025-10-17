@@ -58,7 +58,7 @@ resource "azurerm_network_security_group" "nsg" {
   location            = "West US 2"
 }
 
-resource "azurerm_network_security_rule" "nsgrule" {
+resource "azurerm_network_security_rule" "nsrule" {
   name                        = "AllowRDP"
   access                      = "Allow"
   resource_group_name         = azurerm_resource_group.rg.name
@@ -68,4 +68,6 @@ resource "azurerm_network_security_rule" "nsgrule" {
   priority                    = 100
   source_port_range           = "*"
   destination_port_range      = "3389"
+  source_address_prefix = "*"
+  destination_address_prefix = "*"
 }
