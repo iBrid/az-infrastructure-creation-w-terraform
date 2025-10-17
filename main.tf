@@ -51,3 +51,21 @@ resource "azurerm_virtual_network" "vnet" {
     environment = "test env"
   }
 }
+
+resource "azurerm_network_security_group" "nsg" {
+  name                = "mytfnsg1"
+  resource_group_name = azurerm_resource_group.rg.nmae
+  location            = "West US 2"
+}
+
+resource "azurerm_network_security_rule" "nsgrule" {
+  name                        = "AllowRDP"
+  access                      = "Allow"
+  resource_group_name         = azurerm_resource_group.rg.name
+  network_security_group_name = azurerm_network_security_group.nsg.name
+  protocol                    = "Tcp"
+  direction                   = "Inbound"
+  priority                    = 100
+  source_port_range           = "*"
+  destination_port_range      = "3389"
+}
