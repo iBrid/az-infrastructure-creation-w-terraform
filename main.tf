@@ -42,6 +42,11 @@ resource "azurerm_virtual_network" "vnet" {
   location            = "West US 2"
   address_space       = ["10.0.0.0/16"]
 
+  subnet {
+    name             = "mytfsubnet1"
+    address_prefixes = ["10.0.1.0/24"]
+  }
+
   tags = {
     environment = "test env"
   }
