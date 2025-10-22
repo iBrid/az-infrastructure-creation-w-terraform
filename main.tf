@@ -42,10 +42,10 @@ resource "azurerm_virtual_network" "vnet" {
   location            = "West US 2"
   address_space       = ["10.0.0.0/16"]
 
-  subnet {
+  /*subnet {
     name             = "mytfsubnet1"
     address_prefixes = ["10.0.1.0/24"]
-  }
+  }*/
 
   tags = {
     environment = "test env"
@@ -87,7 +87,7 @@ resource "azurerm_public_ip" "pip" {
   }
 }
 
-resource "azurerm_network_interface" "nic" {
+/*resource "azurerm_network_interface" "nic" {
   name                = "mytfpnic"
   location            = "West US 2"
   resource_group_name = azurerm_resource_group.rg.name
@@ -95,7 +95,7 @@ resource "azurerm_network_interface" "nic" {
   ip_configuration {
     name                          = "internal"
     private_ip_address_allocation = "Dynamic"
-    subnet_id                     = azurerm_virtual_network.subnet.subnet_id
+  
   }
 }
 
@@ -119,4 +119,4 @@ resource "azurerm_windows_virtual_machine" "vm" {
     sku       = "2022-Datacenter"
     version   = "latest"
   }
-}
+} */
