@@ -74,9 +74,8 @@ resource "azurerm_network_security_rule" "nsrule" {
   priority                    = 100
   source_port_range           = "*"
   destination_port_range      = "3389"
-  // source_address_prefix       = "*"
-  destination_address_prefix = "*"
-  source_address_prefixes    = ["103.88.0.0/16", "174.2.0.0/16"]
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
 }
 
 resource "azurerm_public_ip" "pip" {
@@ -101,6 +100,11 @@ resource "azurerm_network_interface" "nic" {
     subnet_id                     = azurerm_subnet.snet.id
     public_ip_address_id          = azurerm_public_ip.pip.id
   }
+}
+
+resource "azurerm_network_interface_security_group_association" "nic_nsg_assoc" {
+  network_interface_id      = azurerm_network_interface.nic.id
+  network_security_group_id = azurerm_network_security_group.nsg.id
 }
 
 resource "azurerm_windows_virtual_machine" "vm" {
