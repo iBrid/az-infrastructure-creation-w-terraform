@@ -74,9 +74,9 @@ resource "azurerm_network_security_rule" "nsrule" {
   priority                    = 100
   source_port_range           = "*"
   destination_port_range      = "3389"
- // source_address_prefix       = "*"
-  destination_address_prefix  = "*"
-  source_address_prefixes     = ["103.88.0.0/16", "174.2.0.0/16"]
+  // source_address_prefix       = "*"
+  destination_address_prefix = "*"
+  source_address_prefixes    = ["103.88.0.0/16", "174.2.0.0/16"]
 }
 
 resource "azurerm_public_ip" "pip" {
