@@ -102,7 +102,7 @@ resource "azurerm_windows_virtual_machine" "vm" {
   name                  = "mytfpvm1"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = "West US 2"
-  network_interface_ids = azurerm_network_interface.nic.id
+  network_interface_ids = [azurerm_network_interface.nic.id]
   size                  = "Standard_F2"
   admin_username        = "azureuser"
   admin_password        = "@dmin12345678"
